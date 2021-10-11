@@ -24,12 +24,12 @@
           <% end %>
 
           <!--いいね機能-->
-          <div id="favorites_buttons_<%= @book.id %>">
+          <td id="favorites_buttons_<%= @book.id %>">
             <%= render partial: 'favorites/favorite', locals: {book: @book} %>
-          </div>
+          </td>
 
-          
-          <!--コメント機能-->
+
+          <!--コメント件数-->
           <td>コメント件数：<%= @book.book_comments.count %></td>
         </tr>
       </table>
