@@ -8,35 +8,10 @@
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
-  		<table class='table'>
-  		  <tr>
-  		    <td><%= link_to user_path(@book.user) do %>
-            <%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %><br>
-            <%= @book.user.name %>
-            <% end %>
-          </td>
-          <td><%= link_to @book.title, book_path(@book) %></td>
-          <td><%= @book.body %></td>
-
-          <% if @book.user == current_user %>
-          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
-          <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
-          <% end %>
-
-          <!--いいね機能-->
-          <td id="favorites_buttons_<%= @book.id %>">
-            <%= render partial: 'favorites/favorite', locals: {book: @book} %>
-          </td>
-
-
-          <!--コメント件数-->
-          <td>コメント件数：<%= @book.book_comments.count %></td>
-        </tr>
-      </table>
-
-      <!--コメント表示-->
+  		
+      <!--コメント機能の非同期-->
       <div id="comments_area">
-        <%= render partial: 'book_comments/comment', locals: {book_comment: @book_comment, book: @book} %>
+        <%= render partial: 'book_comments/comment', locals: {book: @book, book_comment: @book_comment} %>
       </div>
       
       <!--コメントフォームの非同期-->
