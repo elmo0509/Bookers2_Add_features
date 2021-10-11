@@ -24,21 +24,11 @@
           <% end %>
 
           <!--いいね機能-->
-          <% if @book.favorited_by?(current_user) %>
-            <td>
-              <%= link_to book_favorites_path(@book), method: :delete do %>
-                ♥<%= @book.favorites.count %>
-            </td>
-              <% end %>
+          <div id="favorites_buttons_<%= @book.id %>">
+            <%= render partial: 'favorites/favorite', locals: {book: @book} %>
+          </div>
 
-           <% else %>
-             <td>
-               <%= link_to book_favorites_path(@book), method: :post do %>
-               ♡<%= @book.favorites.count %>
-             </td>
-           <% end %>
-          <% end %>
-
+          
           <!--コメント機能-->
           <td>コメント件数：<%= @book.book_comments.count %></td>
         </tr>
